@@ -1,17 +1,16 @@
 const resolve = require('@rollup/plugin-node-resolve')
 const { babel } = require('@rollup/plugin-babel')
 const { terser } = require('rollup-plugin-terser')
+const serve = require('rollup-plugin-serve')
+const livereload = require('rollup-plugin-livereload')
 
 module.exports = {
-  input: './lib/index.js',
+  input: './modules/index.js',
   output: [
     {
-      name: 'iceUtils',
+      name: '_',
       file: './build/mini-underscore-umd.js',
       format: 'umd',
-      globals: {
-        underscore: '_',
-      },
     },
   ],
   plugins: [
@@ -20,6 +19,9 @@ module.exports = {
       babelHelpers: 'bundled',
     }),
     terser(),
+    serve({
+      open: true,
+    }),
+    livereload(),
   ],
-  external: ['underscore'],
 }
