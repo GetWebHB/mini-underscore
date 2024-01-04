@@ -11,3 +11,6 @@ export function each(list, iteratee, context) {
     }
   }
 }
+
+// each([1, 2, 3], console.log)
+// each({ name: 'ice', age: 24 }, console.log)
